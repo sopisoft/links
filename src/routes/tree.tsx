@@ -1,10 +1,20 @@
 import { Hono } from "hono";
+import { cache } from "hono/cache";
 import { css } from "hono/css";
 import LinkItem from "../components/link_item";
 import { links } from "../links";
 import type { Bindings } from "../types";
 
 const app = new Hono<{ Bindings: Bindings }>();
+
+app.get(
+  "*",
+  cache({
+    cacheName: "links",
+    cacheControl: `max-age=${60 * 60 * 24 * 7}`,
+    wait: true,
+  })
+);
 
 app.get("/", (c) => {
   return c.render(
