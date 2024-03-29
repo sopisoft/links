@@ -1,36 +1,47 @@
-import type { SummalyResult } from "@misskey-dev/summaly/built/summary";
 import { css } from "hono/css";
 import { Suspense } from "hono/jsx";
-import { textStyle } from "../style";
+import type { Link } from "../types";
 
 async function Favicon(props: { url: string }) {
   const { url } = props;
   const host = new URL(url).host;
 
-  const api_base = "https://summerflare.sopi.workers.dev/";
-  const api_url = new URL("/url", api_base);
-  api_url.searchParams.append("url", new URL(`https://${host}`).toString());
-  const summalyResult = await fetch(api_url.toString());
-  const summaly: SummalyResult = await summalyResult.json();
-  const favicon =
-    summaly?.icon ?? `https://www.google.com/s2/favicons?domain=${host}`;
-
-  return (
-    <img
-      src={favicon}
-      alt={`${summaly?.sitename ?? host} favicon`}
-      class={css`
-        padding: 0.2rem;
-        height: 2rem;
-        max-width: 2rem;
-        max-height: 2rem;
-        aspect-ratio: 1/1;
-        border-radius: 0.5rem;
-        overflow: hidden;
-        object-fit: cover;
-      `}
-    />
-  );
+  const favicon_url = `https://www.google.com/s2/favicons?sz=${256}&domain=${host}`;
+  return await fetch(favicon_url)
+    .then(() => {
+      return (
+        <img
+          src={`/proxy?url=${encodeURIComponent(favicon_url)}`}
+          alt={`${host} favicon`}
+          class={css`
+                padding: 0.2rem;
+                height: 2rem;
+                max-width: 2rem;
+                max-height: 2rem;
+                aspect-ratio: 1/1;
+                border-radius: 0.5rem;
+                overflow: hidden;
+                object-fit: cover;
+              `}
+        />
+      );
+    })
+    .catch(() => {
+      return (
+        <div
+          class={css`
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 2rem;
+                height: 2rem;
+                padding: 0.2rem;
+              `}
+        >
+          {host[0].toUpperCase()}
+        </div>
+      );
+    });
 }
 
 async function LinkItem(Link: Link) {

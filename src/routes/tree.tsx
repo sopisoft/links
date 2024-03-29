@@ -1,9 +1,12 @@
+import { Hono } from "hono";
 import { css } from "hono/css";
-import { createRoute } from "honox/factory";
 import LinkItem from "../components/link_item";
 import { links } from "../links";
+import type { Bindings } from "../types";
 
-export default createRoute((c) => {
+const app = new Hono<{ Bindings: Bindings }>();
+
+app.get("/", (c) => {
   return c.render(
     <div
       class={css`
@@ -48,3 +51,5 @@ export default createRoute((c) => {
     }
   );
 });
+
+export default app;

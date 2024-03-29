@@ -8,7 +8,7 @@
     "clientKind": "git"
   },
   "files": {
-    "include": ["app/**/*.ts", "app/**/*.tsx"],
+    "include": ["src/**/*.ts", "src/**/*.tsx"],
     "ignore": ["dist/*", "node_modules/*"],
     "ignoreUnknown": true
   },

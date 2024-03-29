@@ -6,16 +6,8 @@
     "strict": true,
     "lib": [
       "ESNext",
-      "DOM"
     ],
     "jsx": "react-jsx",
     "jsxImportSource": "hono/jsx",
-    "typeRoots": [
-      "app/@types",
-      "node_modules/@types"
-    ],
-  },
-  "include": [
-    "app/**/*"
-  ]
+  }
 }

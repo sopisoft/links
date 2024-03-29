@@ -1,8 +1,7 @@
 import { Style, css } from "hono/css";
 import { jsxRenderer } from "hono/jsx-renderer";
-import { Script } from "honox/server";
 
-export default jsxRenderer(
+const jsx = jsxRenderer(
   ({ children, title, metas }) => {
     return (
       <html lang="ja-JP">
@@ -13,19 +12,10 @@ export default jsxRenderer(
             content="width=device-width, initial-scale=1.0"
           />
           <title>{title}</title>
-          <link
-            rel="icon"
-            href="data:image/svg+xml,
-          <svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22>
-            <text x=%2250%%22 y=%2250%%22 style=%22dominant-baseline:central;text-anchor:middle;font-size:90px;%22>
-              🐢
-            </text>
-          </svg>"
-          />
-          {metas?.map((meta, i) => (
-            <meta.tag key={i} {...meta.props} />
+          <link rel="icon" href="/favicon" />
+          {metas?.map((meta) => (
+            <meta.tag {...meta.props} />
           ))}
-          <Script src="/app/client.ts" />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link
             rel="preconnect"
@@ -60,3 +50,5 @@ export default jsxRenderer(
     stream: true,
   }
 );
+
+export default jsx;

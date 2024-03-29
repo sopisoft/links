@@ -21,10 +21,9 @@
 		},
 		{
 			"type": "bun",
-			"script": "bun run build",
+			"script": "bun run deploy",
 			"problemMatcher": [],
-			"group": "build",
-			"label": "bun: build"
+			"label": "bun: deploy"
 		}
 	]
 }

@@ -9,6 +9,5 @@ bun run dev
 ## Deploy
 
 ```bash
-bun run build
-bunx wrangler pages deploy ./dist
+bun run deploy
 ```
