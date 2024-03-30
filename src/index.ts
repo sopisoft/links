@@ -12,6 +12,14 @@ import type { Bindings } from "./types";
 const app = new Hono<{ Bindings: Bindings }>();
 
 app.get("*", renderer);
+app.get("/robots.txt", (c) => {
+  let txt = "";
+  txt += "User-agent: *\n";
+  txt += "Allow: /tree\n";
+  txt += "Disallow: /\n";
+
+  return c.text(txt);
+});
 
 app.route("/favicon", favicon);
 

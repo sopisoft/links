@@ -19,7 +19,7 @@ declare module "hono" {
 }
 
 type Bindings = {
-  img: Fetcher;
+  img_emoji: Fetcher;
 };
 
 interface Link {

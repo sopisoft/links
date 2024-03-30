@@ -37,6 +37,12 @@ const jsx = jsxRenderer(
                 margin: 0;
                 padding: 0;
                 box-sizing: border-box;
+                font-family: "Noto Sans JP", sans-serif;
+                font-optical-sizing: auto;
+                font-weight: "normal";
+                font-style: "normal";
+                font-size: "normal";
+                line-height: 1.5;
               }
             `}
           </Style>

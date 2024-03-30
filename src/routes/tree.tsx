@@ -11,7 +11,7 @@ app.get(
   "*",
   cache({
     cacheName: "links",
-    cacheControl: `max-age=${60 * 60 * 24 * 7}`,
+    cacheControl: `max-age=${60 * 60 * 24 * 7 * 3}`,
     wait: true,
   })
 );
@@ -27,34 +27,21 @@ app.get("/", (c) => {
         margin: 0;
         padding: 1rem min(1rem, 5%);
         border-radius: 1rem;
-        font-family: "Noto Sans JP", sans-serif;
-        font-optical-sizing: auto;
-        font-weight: "normal";
-        font-style: "normal";
-        font-size: "normal";
-        line-height: 1.5;
       `}
     >
-      <h1
-        class={css`
-          font-size: 2rem;
-          font-weight: bold;
-        `}
-      >
-        Links Tree
-      </h1>
+      <h1>Links Tree</h1>
       {links.map((link) => (
         <LinkItem {...link} />
       ))}
     </div>,
     {
-      title: "Links Tree",
+      title: "Links",
       metas: [
         {
           tag: "meta",
           props: {
             name: "description",
-            content: "My Links",
+            content: "sopi's social links tree",
           },
         },
       ],
