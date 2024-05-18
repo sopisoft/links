@@ -31,6 +31,7 @@ app.get("/", (c) => {
     >
       <h1>Links Tree</h1>
       {links.map((link) => (
+        // biome-ignore lint/correctness/useJsxKeyInIterable: <explanation>
         <LinkItem {...link} />
       ))}
     </div>,

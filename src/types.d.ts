@@ -4,6 +4,7 @@
 import {} from "hono";
 
 declare module "hono" {
+  // biome-ignore lint/complexity/noBannedTypes: <explanation>
   interface ContextRenderer extends Function {
     (
       content: string | Promise<string>,

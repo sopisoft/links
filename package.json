@@ -1,6 +1,7 @@
 {
   "name": "links",
   "private": true,
+  "packageManager": "yarn@4.2.2",
   "scripts": {
     "dev": "bunx wrangler dev",
     "format": "bunx @biomejs/biome format --write .",
@@ -8,12 +9,12 @@
     "deploy": "bunx wrangler deploy"
   },
   "dependencies": {
-    "hono": "^4.1.5"
+    "hono": "^4.3.7"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.6.3",
-    "@cloudflare/workers-types": "^4.20240329.0",
-    "typescript": "^5.4.3",
-    "wrangler": "^3.41.0"
+    "@biomejs/biome": "^1.7.3",
+    "@cloudflare/workers-types": "^4.20240512.0",
+    "typescript": "^5.4.5",
+    "wrangler": "^3.57.0"
   }
 }

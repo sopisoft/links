@@ -3,11 +3,11 @@
 ## Development
 
 ```bash
-bun run dev
+yarn dev
 ```
 
 ## Deploy
 
 ```bash
-bun run deploy
+yarn deploy
 ```

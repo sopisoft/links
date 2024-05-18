@@ -2,7 +2,7 @@ import type { Link } from "./types";
 
 const links: Link[] = [
   {
-    link: "https://twitter.com/sopi_exe",
+    link: "https://twitter.com/sopi_dev",
     text: "Twitter",
     description: "My Twitter account.",
   },

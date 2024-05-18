@@ -14,6 +14,7 @@ const jsx = jsxRenderer(
           <title>{title}</title>
           <link rel="icon" href="/favicon" />
           {metas?.map((meta) => (
+            // biome-ignore lint/correctness/useJsxKeyInIterable: <explanation>
             <meta.tag {...meta.props} />
           ))}
           <link rel="preconnect" href="https://fonts.googleapis.com" />
