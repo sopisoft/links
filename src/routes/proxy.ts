@@ -10,7 +10,7 @@ app.get(
     cacheName: "proxy",
     cacheControl: `max-age=${60 * 60 * 24 * 7 * 3}`,
     wait: true,
-  })
+  }),
 );
 
 app.all("/", async (c) => {

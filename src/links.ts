@@ -3,28 +3,45 @@ import type { Link } from "./types";
 const links: Link[] = [
   {
     link: "https://twitter.com/sopi_dev",
+    id: "sopi_dev",
     text: "Twitter",
-    description: "My Twitter account.",
+    description: "いいねやリツイートをしています",
   },
   {
     link: "https://misskey.io/@gobo",
+    id: "@gobo",
     text: "Misskey.io",
-    description: "My Misskey account.",
-  },
-  {
-    link: "https://github.com/sopisoft",
-    text: "GitHub",
-    description: "My GitHub account.",
+    description: "リアクションシューティングをしています",
   },
   {
     link: "https://annict.com/@sopi",
+    id: "sopi",
     text: "Annict",
-    description: "My Annict account.",
+    description: "視聴したアニメを記録しています",
+  },
+  {
+    link: "https://github.com/sopisoft",
+    id: "sopisoft",
+    text: "GitHub",
+    description: "GitHub account.",
+  },
+  {
+    link: "https://zenn.dev/sopi",
+    id: "sopi",
+    text: "Zenn",
+    description: "あんまり投稿していません",
+  },
+  {
+    link: "https://discord.com/users/915858613996761118",
+    id: "sopi.exe",
+    text: "Discord",
+    description: "みるだけ",
   },
   {
     link: "https://bsky.app/profile/sopi.bsky.social",
-    text: " Bluesky Social",
-    description: "My Bluesky account.",
+    id: "sopi.bsky.social",
+    text: " Bluesky",
+    description: "なんにもしていません",
   },
 ] as const;
 

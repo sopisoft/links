@@ -1,51 +1,8 @@
 import { css } from "hono/css";
-import { Suspense } from "hono/jsx";
 import type { Link } from "../types";
 
-async function Favicon(props: { url: string }) {
-  const { url } = props;
-  const host = new URL(url).host;
-
-  const favicon_url = `https://www.google.com/s2/favicons?sz=${128}&domain=${host}`;
-  return await fetch(favicon_url)
-    .then(() => {
-      return (
-        <img
-          src={`/proxy?url=${encodeURIComponent(favicon_url)}`}
-          alt={`${host} favicon`}
-          class={css`
-            padding: 0.2rem;
-            height: 2rem;
-            max-width: 2rem;
-            max-height: 2rem;
-            aspect-ratio: 1/1;
-            border-radius: 0.5rem;
-            overflow: hidden;
-            object-fit: cover;
-          `}
-        />
-      );
-    })
-    .catch(() => {
-      return (
-        <div
-          class={css`
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 2rem;
-            height: 2rem;
-            padding: 0.2rem;
-          `}
-        >
-          {host[0].toUpperCase()}
-        </div>
-      );
-    });
-}
-
-async function LinkItem(Link: Link) {
-  const { text, description, link } = Link;
+function LinkItem(Link: Link) {
+  const { link, id, text, description } = Link;
 
   return (
     <a
@@ -55,34 +12,31 @@ async function LinkItem(Link: Link) {
       class={css`
         display: flex;
         flex-direction: row;
-        align-items: center;
-        height: 5rem;
-        padding: 0rem 1rem;
-        background: #e3e2e28f;
+        align-items: center; 
+        padding: 0.5rem 1rem;
+        background: rgba(247, 247, 247, 0.8);
         border-radius: 1rem;
+        text-decoration : none;
+        border : 1px solid rgba(0, 0, 0, 0.1);
         &:hover {
-          background: #e3e2e2;
+          background: rgba(247, 247, 247, 1);
         }
       `}
     >
-      <Suspense
-        fallback={
-          <div
-            class={css`
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              width: 2rem;
-              height: 2rem;
-              padding: 0.2rem;
-           `}
-          >
-            ...
-          </div>
-        }
-      >
-        <Favicon url={link} />
-      </Suspense>
+      <img
+        src={`/proxy?url=${encodeURIComponent(`https://www.google.com/s2/favicons?sz=${128}&domain=${new URL(link).host}`)}`}
+        alt={`${new URL(link).host} favicon`}
+        class={css`
+        padding: 0.2rem;
+        height: 2rem;
+        max-width: 2rem;
+        max-height: 2rem;
+        aspect-ratio: 1/1;
+        border-radius: 0.5rem;
+        overflow: hidden;
+        object-fit: cover;
+      `}
+      />
       <div
         class={css`
           display: flex;
@@ -92,11 +46,22 @@ async function LinkItem(Link: Link) {
       >
         <span
           class={css`
+            display: flex;
+            flex-direction: row;
+            align-items: baseline;
+            gap : 0.5rem;
             font-weight: bold;
             font-size: 1.5rem;
           `}
         >
           {text}
+          <span
+            class={css`
+            font-size: 0.8rem;
+          `}
+          >
+            ( {id} )
+          </span>
         </span>
         <span
           class={css`

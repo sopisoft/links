@@ -14,8 +14,7 @@ const jsx = jsxRenderer(
           <title>{title}</title>
           <link rel="icon" href="/favicon" />
           {metas?.map((meta) => (
-            // biome-ignore lint/correctness/useJsxKeyInIterable: <explanation>
-            <meta.tag {...meta.props} />
+            <meta.tag key={meta.props[0]} {...meta.props} />
           ))}
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link
@@ -40,9 +39,6 @@ const jsx = jsxRenderer(
                 box-sizing: border-box;
                 font-family: "Noto Sans JP", sans-serif;
                 font-optical-sizing: auto;
-                font-weight: "normal";
-                font-style: "normal";
-                font-size: "normal";
                 line-height: 1.5;
               }
             `}
@@ -55,7 +51,7 @@ const jsx = jsxRenderer(
   {
     docType: true,
     stream: true,
-  }
+  },
 );
 
 export default jsx;

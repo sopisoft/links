@@ -10,7 +10,7 @@ app.get(
     cacheName: "favicon",
     cacheControl: `max-age=${60 * 60 * 24 * 7 * 3}`,
     wait: true,
-  })
+  }),
 );
 
 app.get("/", async (c) => {

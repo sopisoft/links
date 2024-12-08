@@ -1,5 +1,4 @@
 import { Hono } from "hono";
-import { showRoutes } from "hono/dev";
 import renderer from "./_renderer";
 import notFound from "./routes/_404";
 import onError from "./routes/_error";
@@ -30,7 +29,5 @@ app.route("/proxy", proxy);
 
 app.notFound(notFound);
 app.onError(onError);
-
-showRoutes(app);
 
 export default app;

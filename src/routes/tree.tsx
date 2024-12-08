@@ -7,14 +7,14 @@ import type { Bindings } from "../types";
 
 const app = new Hono<{ Bindings: Bindings }>();
 
-app.get(
-  "*",
-  cache({
-    cacheName: "links",
-    cacheControl: `max-age=${60 * 60 * 24 * 7 * 3}`,
-    wait: true,
-  })
-);
+// app.get(
+//   "*",
+//   cache({
+//     cacheName: "links",
+//     cacheControl: `max-age=${60 * 60 * 24 * 7 * 3}`,
+//     wait: true,
+//   }),
+// );
 
 app.get("/", (c) => {
   return c.render(
@@ -29,14 +29,13 @@ app.get("/", (c) => {
         border-radius: 1rem;
       `}
     >
-      <h1>Links Tree</h1>
+      <h1>sopi's links</h1>
       {links.map((link) => (
-        // biome-ignore lint/correctness/useJsxKeyInIterable: <explanation>
-        <LinkItem {...link} />
+        <LinkItem key={link.link} {...link} />
       ))}
     </div>,
     {
-      title: "Links",
+      title: "sopi's links",
       metas: [
         {
           tag: "meta",
@@ -46,7 +45,7 @@ app.get("/", (c) => {
           },
         },
       ],
-    }
+    },
   );
 });
 

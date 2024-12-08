@@ -14,7 +14,7 @@ declare module "hono" {
           tag: "meta" | "link" | "script" | "style";
           props: { [key: string]: string };
         }[];
-      }
+      },
     ): Response;
   }
 }
@@ -25,6 +25,7 @@ type Bindings = {
 
 interface Link {
   link: string;
+  id: string;
   text: string;
   description: string;
 }
