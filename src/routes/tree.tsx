@@ -7,14 +7,14 @@ import type { Bindings } from "../types";
 
 const app = new Hono<{ Bindings: Bindings }>();
 
-// app.get(
-//   "*",
-//   cache({
-//     cacheName: "links",
-//     cacheControl: `max-age=${60 * 60 * 24 * 7 * 3}`,
-//     wait: true,
-//   }),
-// );
+app.get(
+  "*",
+  cache({
+    cacheName: "links",
+    cacheControl: `max-age=${60 * 60 * 24 * 7 * 3}`,
+    wait: true,
+  }),
+);
 
 app.get("/", (c) => {
   return c.render(
