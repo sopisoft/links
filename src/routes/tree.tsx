@@ -16,7 +16,7 @@ app.get(
   }),
 );
 
-app.get("/", (c) => {
+app.get("/", async (c) => {
   return c.render(
     <div
       class={css`

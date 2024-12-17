@@ -21,6 +21,7 @@ declare module "hono" {
 
 type Bindings = {
   img_emoji: Fetcher;
+  summerflare: Fetcher;
 };
 
 interface Link {

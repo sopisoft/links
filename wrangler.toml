@@ -5,3 +5,7 @@ compatibility_date = "2024-03-20"
 [[services]]
 binding = "img_emoji"
 service = "img_emoji"
+
+[[services]]
+binding = "summerflare"
+service = "summerflare"

@@ -1,7 +1,7 @@
 import { css } from "hono/css";
 import type { Link } from "../types";
 
-function LinkItem(Link: Link) {
+async function LinkItem(Link: Link) {
   const { link, id, text, description } = Link;
 
   return (
@@ -24,7 +24,7 @@ function LinkItem(Link: Link) {
       `}
     >
       <img
-        src={`/proxy?url=${encodeURIComponent(`https://www.google.com/s2/favicons?sz=${128}&domain=${new URL(link).host}`)}`}
+        src={`/favicon/get?url=${encodeURI(new URL(link).toString())}`}
         alt={`${new URL(link).host} favicon`}
         class={css`
         padding: 0.2rem;

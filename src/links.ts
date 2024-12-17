@@ -9,9 +9,15 @@ const links: Link[] = [
   },
   {
     link: "https://misskey.io/@gobo",
-    id: "@gobo",
+    id: "gobo",
     text: "Misskey.io",
     description: "リアクションシューティングをしています",
+  },
+  {
+    link: "https://mixi.social/@sopi",
+    id: "sopi",
+    text: "mixi2",
+    description: "いろんなコミュニティに参加しています",
   },
   {
     link: "https://annict.com/@sopi",
@@ -30,12 +36,6 @@ const links: Link[] = [
     id: "sopi",
     text: "Zenn",
     description: "あんまり投稿していません",
-  },
-  {
-    link: "https://discord.com/users/915858613996761118",
-    id: "sopi.exe",
-    text: "Discord",
-    description: "みるだけ",
   },
   {
     link: "https://bsky.app/profile/sopi.bsky.social",
