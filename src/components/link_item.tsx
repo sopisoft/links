@@ -24,7 +24,7 @@ async function LinkItem(Link: Link) {
       `}
     >
       <img
-        src={`/favicon/get?url=${encodeURI(new URL(link).toString())}`}
+        src={`/favicon/get?url=https:/${encodeURI(new URL(link).host)}`}
         alt={`${new URL(link).host} favicon`}
         class={css`
         padding: 0.2rem;

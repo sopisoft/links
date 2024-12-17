@@ -8,14 +8,14 @@ app.get(
   "/",
   cache({
     cacheName: "favicon",
-    cacheControl: `max-age=${60 * 60 * 24 * 7 * 3}`,
+    cacheControl: `max-age=${60 * 60 * 24 * 7 * 4}`,
     wait: true,
   }),
 );
 
 app.get("/", async (c) => {
   const base = "https://img_emoji.sopi.workers.dev/";
-  const path = "api/emoji/v1/🐢.png?provider=fluent&size=32";
+  const path = "api/emoji/v1/🌲.png?provider=fluent&size=32";
   const url = new URL(path, base);
   const req = new Request(url);
 
@@ -39,21 +39,25 @@ app.get("/get", async (c) => {
   const icon = await res
     .json()
     .then((json: unknown) => (json as { icon: string }).icon);
-  const ireq = new Request(icon);
-  const ires = await fetch(ireq);
-  const ibuffer = await ires.arrayBuffer();
 
-  if (ires.ok && ibuffer.byteLength > 0) {
-    const headers = new Headers(ires.headers);
-    headers.set("cache-control", `max-age=${60 * 60 * 24 * 7}`);
+  {
+    const res = await fetch(icon);
+    const buffer = await res.arrayBuffer();
 
-    const response = new Response(ibuffer, {
-      status: ires.status,
-      statusText: ires.statusText,
-      headers,
-    });
+    if (res.ok && buffer.byteLength > 0) {
+      const headers = new Headers();
+      headers.set("cache-control", `max-age=${60 * 60 * 24 * 7}`);
+      const contentType = res.headers.get("content-type");
+      if (contentType) headers.set("content-type", contentType);
 
-    return response;
+      const response = new Response(buffer, {
+        status: res.status,
+        statusText: res.statusText,
+        headers,
+      });
+
+      return response;
+    }
   }
 });
 

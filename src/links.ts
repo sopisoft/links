@@ -38,6 +38,12 @@ const links: Link[] = [
     description: "あんまり投稿していません",
   },
   {
+    link: "https://discord.com/users/915858613996761118",
+    id: "sopi.exe",
+    text: "Discord",
+    description: "みるだけ",
+  },
+  {
     link: "https://bsky.app/profile/sopi.bsky.social",
     id: "sopi.bsky.social",
     text: " Bluesky",
