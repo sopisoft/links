@@ -3,11 +3,11 @@
 ## Development
 
 ```bash
-yarn dev
+pnpm dev
 ```
 
 ## Deploy
 
 ```bash
-yarn deploy
+pnpm run deploy
 ```
