@@ -3,11 +3,19 @@
 ## Development
 
 ```bash
-pnpm dev
+PORT=3000 cargo run
 ```
 
-## Deploy
+## Docker
+
+Build the image and expose port 3000:
 
 ```bash
-pnpm run deploy
+docker build -t links .
+docker run --rm -p 3000:3000 links
+```
+
+```bash
+docker tag links your-registry/links
+docker push your-registry/links
 ```
