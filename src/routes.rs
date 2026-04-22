@@ -31,10 +31,15 @@ fn cache_headers(content_type: &'static str, cache_control: &'static str) -> Hea
 pub async fn security_headers(request: Request<Body>, next: Next) -> Response {
     let mut response = next.run(request).await;
     let headers = response.headers_mut();
+    let nonce = "nonce-".to_string() + &nanoid::nanoid!(16);
     insert_if_missing(
         headers,
         "content-security-policy",
-        "default-src 'none'; img-src 'self'; style-src 'self';",
+        format!(
+            "default-src 'none'; connect-src 'self'; img-src 'self'; style-src 'self'; script-src 'self' '{nonce}';",
+            nonce = nonce
+        )
+        .as_str(),
     );
     insert_if_missing(
         headers,
